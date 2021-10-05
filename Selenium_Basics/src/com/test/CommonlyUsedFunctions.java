@@ -151,9 +151,4 @@ public class CommonlyUsedFunctions {
 			 System.out.println(e);
 		}
 	 }
-	 
-
-
-
-
 }
