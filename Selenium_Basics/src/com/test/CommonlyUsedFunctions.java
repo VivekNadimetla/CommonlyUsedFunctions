@@ -86,7 +86,7 @@ public class CommonlyUsedFunctions {
 		 driver.close();
 		 driver.quit();
 			 
-		 }
+		 }//test
 		 catch (Exception e) {
 			System.out.println(e);
 		}
