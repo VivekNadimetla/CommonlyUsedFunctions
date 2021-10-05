@@ -135,7 +135,7 @@ public class CommonlyUsedFunctions {
 		 }
 	 }
 	 
-	 //Explicit wait until a specific element is Clickable
+	 //Explicit wait until a an element is Clickable
 	 public static void WaitForClickableElement(String... args) {
 		 try {
 			 WebDriver driver;
