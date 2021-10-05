@@ -134,7 +134,7 @@ public class CommonlyUsedFunctions {
 			 System.out.println(e);
 		 }
 	 }
-	 
+	
 	 //Explicit wait until a an element is Clickable
 	 public static void WaitForClickableElement(String... args) 
 	 {
