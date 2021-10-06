@@ -6,6 +6,7 @@ import java.lang.System.Logger;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,7 @@ public class CommonlyUsedFunctions {
 		SetZoomToZero();
 		WaitForElement(); //Provide Xpath of the element you want Selenium to wait until it is visible
 		WaitForClickableElement(); //Provide xpath of the element you want Selenium to wait until clickable
+		ScrollUntilElementVisible("//a[text()='Facebook']"); //Provide xpath of the element
 		
 		
 	}
@@ -57,7 +59,7 @@ public class CommonlyUsedFunctions {
 			 inputfield.sendKeys(value+Keys.ENTER); //Sends input and clicks Enter
 		 }
 		 catch (Exception e) {
-			 System.out.println(e);
+			 e.printStackTrace();
 		}
 			driver.close();
 			driver.quit();
@@ -76,7 +78,7 @@ public class CommonlyUsedFunctions {
 			 driver.quit(); 
 		 }
 		 catch (Exception e) {
-			 System.out.println(e);
+			 e.printStackTrace();
 		}
 	 }
 	 
@@ -113,7 +115,7 @@ public class CommonlyUsedFunctions {
 		 Thread.sleep(5000);
 		 }
 		 catch (Exception e) {
-			System.out.println(e);
+			 e.printStackTrace();
 		}
 
 	 }
@@ -131,7 +133,7 @@ public class CommonlyUsedFunctions {
 			 System.out.println("Expected element is visible");
 		 }
 		 catch (Exception e) {
-			 System.out.println(e);
+			 e.printStackTrace();
 		 }
 	 }
 	
@@ -149,7 +151,32 @@ public class CommonlyUsedFunctions {
 			 System.out.println("Expected clickalble element is visible");
 		 }
 		 catch (Exception e) {
-			 System.out.println(e);
+			 e.printStackTrace();
 		}
 	 }
+	 
+	 //Scroll until an element is visible
+	 public static void ScrollUntilElementVisible(String... args) {
+		 try {
+			 WebDriver driver;
+			 System.setProperty("webdriver.chrome.driver", "C:\\Selenium-java\\chromedriver.exe");
+			 driver = new ChromeDriver();
+			 driver.get("https://www.examtopics.com/exams/microsoft/az-900/");
+			 driver.manage().window().maximize();
+			 Thread.sleep(500);
+			 String arg = "arguments[0].scrollIntoView({behavior: \"auto\", block: \"center\", inline: \"center\"}) ;";
+			 WebElement fblink = driver.findElement(By.xpath(args[0]));
+			 ((JavascriptExecutor)driver).executeScript(arg, fblink);
+		     Thread.sleep(1800);
+			 System.out.println("Element is found");
+			 fblink.click();
+			 driver.close();
+			 driver.quit();
+		 }
+		 catch (Exception e) {
+			 e.printStackTrace(); //Will point the exact line in which the method raised the exception.
+		}
+	 }
+	 
+	 
 }
